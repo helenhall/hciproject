@@ -1,1 +1,57 @@
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question Page Grid</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .spanningrectangle {
+            height: 120px;
+            width: 100%;
+            background-color: lightblue;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            font-size: 400%;
+            }
+
+            .rectangle {
+            height: 50px;
+            width: 100px;
+            background-color: #555;
+            }
+
+            .container {
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            grid-gap: 5px;
+            }
+
+            .container div {
+            background-color: lightblue;
+            aspect-ratio: 15 / 6;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            font-size: 400%;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="spanningrectangle">Question 3</div>
+        </div>
+        
+        <br>
+        <div class="container">
+            <a href="results.html"><div>Go to the beach</div></a>
+            <a href="results.html"><div>Go to the mountain</div></a>
+            <a href="results.html"><div>Go to the lake</div></a>
+            <a href="results.html"><div>Go to the mall</div></a>
+        </div>
+        
+    </body>
+    <script>
+
+    </script>
+</html>
