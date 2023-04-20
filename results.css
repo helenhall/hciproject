@@ -1,5 +1,5 @@
 .headerPrompt {
-    background-color: gainsboro;
+    color: white;
     padding: 5px;
 }
 
@@ -12,12 +12,7 @@
 }
 
 .clubEntry {
-    display: flex;
-    /* flex */
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: khaki;
+    background-color: white;
 }
 
 .hSpacer {
@@ -35,4 +30,8 @@
 .vPadding {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.bodyBackground {
+    background-color: #322359;
 }

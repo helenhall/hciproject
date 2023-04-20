@@ -6,45 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="results.css">
     <title>Result</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bodyBackground">
     <div>
-        <div class="headerPrompt vPadding">
+        <div class="headerPrompt p-8">
             <p>
                 <span>Since you've selected: </span>
                 <span name="selected_activity"> placeholder</span>
             </p>
         </div>
 
-        <div class="hStack vPadding">
-            <div class="clubDivs">
-                <div class="clubEntry">
-                    <div class="clubNameBlock">
-                        Club 2
-                    </div>
-                    <div class="hSpacer"></div>
-                    <div>
-                        QR Code 2
-                    </div>
-                </div>
-
-                <div class="clubEntry">
-                    <div class="clubNameBlock">
-                        Club 2
-                    </div>
-                    <div class="hSpacer"></div>
-                    <div>
-                        QR Code 2
+        <div class="grid grid-rows-1 grid-flow-col gap-4">
+            <div class="flex flex-wrap">
+                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
+                    <div class="grid grid-rows-3 grid-flow-col gap-4">
+                        <div class="row-span-3">
+                            <img src="https://placehold.co/400"/>
+                        </div>
+    
+                        <div class="col-span-2">
+                            Club Name
+                        </div>
+                        
+                        <div class="row-span-2 col-span-2">
+                            Club Description
+                        </div>
                     </div>
                 </div>
 
-                <div class="clubEntry">
-                    <div class="clubNameBlock">
-                        Club 3
+                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
+                    <div class="grid grid-rows-3 grid-flow-col gap-4">
+                        <div class="row-span-3">
+                            <img src="https://placehold.co/400" width="400" height="400"/>
+                        </div>
+    
+                        <div class="col-span-2">
+                            Club Name
+                        </div>
+                        
+                        <div class="row-span-2 col-span-2">
+                            Club Description
+                        </div>
                     </div>
-                    <div class="hSpacer"></div>
-                    <div>
-                        QR Code 3
+                </div>
+
+                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
+                    <div class="grid grid-rows-3 grid-flow-col gap-4">
+                        <div class="row-span-3">
+                            <img src="https://placehold.co/400" width="400" height="400"/>
+                        </div>
+    
+                        <div class="col-span-2">
+                            Club Name
+                        </div>
+                        
+                        <div class="row-span-2 col-span-2">
+                            Club Description
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
+                    <div class="grid grid-rows-3 grid-flow-col gap-4">
+                        <div class="row-span-3">
+                            <img src="https://placehold.co/400" width="400" height="400"/>
+                        </div>
+    
+                        <div class="col-span-2">
+                            Club Name
+                        </div>
+                        
+                        <div class="row-span-2 col-span-2">
+                            Club Description
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
+                    <div class="grid grid-rows-3 grid-flow-col gap-4">
+                        <div class="row-span-3">
+                            <img src="https://placehold.co/400" width="400" height="400"/>
+                        </div>
+    
+                        <div class="col-span-2">
+                            Club Name
+                        </div>
+                        
+                        <div class="row-span-2 col-span-2">
+                            Club Description
+                        </div>
                     </div>
                 </div>
             </div>
