@@ -1,38 +1,17 @@
 .headerPrompt {
-    background-color: gainsboro;
+    color: white;
     padding: 5px;
-}
-
-.clubDivs {
-    display: block;
-    width: 80%;
-    margin-right: 10px;
-    background-color: gainsboro;
-    padding: 10px;
+    font-size: larger;
 }
 
 .clubEntry {
-    display: flex;
-    /* flex */
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: khaki;
+    background-color: white;
 }
 
-.hSpacer {
-    width: 20px;
+.bodyBackground {
+    background-color: #322359;
 }
 
-.hStack {
-    display: flex;
-}
-
-.clubNameBlock {
-    width: 60%;
-}
-
-.vPadding {
-    padding-top: 10px;
-    padding-bottom: 10px;
+.gallery {
+    background-color: white;
 }
