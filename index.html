@@ -1,41 +1,130 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Home Page</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class = "center" style = "padding:8px; text-align:center">
-      <h1 style = "margin: 10px; font-size: 40px;">Club Connections</h1>
-      <p1 style = "margin: bottom 10px; padding: 10px; font-size:30px;">Raise hand to start game</p1>
-      <a href = "question1.html">raise hand</a>
-    </div>
-    <div class = "center circle1">
-      <h3 class = "centered">2 min activity</h3>
-    </div>
-    <div class = "left">
-      <div class = "textbox">
-        <h4>Find clubs on campus to join</h4>
-      </div>
-      <div class = "circle">
-        <div class = "centered">
-          <h4>Club 1</h4>
-          <h4>Club 2</h4>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="results.css">
+    <title>Result</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bodyBackground">
+    <div>
+        <div class = "flex">
+            <div class = "w-2/3 p-4">
+              <img src = "logo3.png" class="w-96 left-0 top-0" style = "width: 40rem"/>
+              <div class = "undertext" style = "color: white; font-size:64px;">Activity Duration: 2 min</div>
+            </div>
+            <div class = "w-1/3 flex items-center justify-left">
+              <div class="flex items-center justify-center h-56 w-56 rounded-full bg-white">
+                <p class="text-center p-4" style = "font-size:30px;">Raise your hand to start playing!</p>
+              </div>
+            </div>
+            
+          </div>
+        <div class="grid grid-rows-1 grid-flow-col gap-2">
+            <div class="flex flex-wrap">
+                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
+                    <div class="flex">
+                        <div class="flex-auto w-32 mr-4">
+                            <img src="https://placehold.co/400"/>
+                        </div>
+                        
+                        <div class="flex flex-col">
+                            <div>
+                                Club Name
+                            </div>
+                            
+                            <div>
+                                Club Description
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
+                    <div class="flex">
+                        <div class="flex-auto w-32 mr-4">
+                            <img src="https://placehold.co/400"/>
+                        </div>
+                        
+                        <div class="flex flex-col">
+                            <div>
+                                Club Name
+                            </div>
+                            
+                            <div>
+                                Club Description
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
+                    <div class="flex">
+                        <div class="flex-auto w-32 mr-4">
+                            <img src="https://placehold.co/400"/>
+                        </div>
+                        
+                        <div class="flex flex-col">
+                            <div>
+                                Club Name
+                            </div>
+                            
+                            <div>
+                                Club Description
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
+                    <div class="flex">
+                        <div class="flex-auto w-32 mr-4">
+                            <img src="https://placehold.co/400"/>
+                        </div>
+                        
+                        <div class="flex flex-col">
+                            <div>
+                                Club Name
+                            </div>
+                            
+                            <div>
+                                Club Description
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
+                    <div class="flex">
+                        <div class="flex-auto w-32 mr-4">
+                            <img src="https://placehold.co/400"/>
+                        </div>
+                        
+                        <div class="flex flex-col">
+                            <div>
+                                Club Name
+                            </div>
+                            
+                            <div>
+                                Club Description
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery mr-8 p-8 rounded-lg">
+                <div class="mb-8">
+                    You can scan the QR Code below to draw the picture... just a placeholder.
+                </div>
+
+                <div class="w-full mr-4">
+                    <img src="https://placehold.co/400"/>
+                </div>
+            </div>
         </div>
-        
-      </div>
     </div>
-    <div class = "right">
-      <div class = "textbox" style = "text-align: center;">
-        <h4>Add to the mural</h4>
-      </div>
-      <div class = "circle">
-        <h4 class = "centered">Mural Photo</h4>
-      </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>

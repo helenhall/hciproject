@@ -15,3 +15,15 @@
 .gallery {
     background-color: white;
 }
+
+#circle {
+    background: lightblue;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.undertext {
+    font-size: 100px;
+    color: white;
+}
