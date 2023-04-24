@@ -1,0 +1,35 @@
+body {
+    background: #322359;
+}
+
+.spanningrectangle {
+    height: 120px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 400%;
+    }
+
+    .rectangle {
+    height: 50px;
+    width: 100px;
+    background-color: #555;
+    }
+
+    .container {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-gap: 5px;
+    }
+
+    .container div {
+    background-color: white;
+    aspect-ratio: 15 / 6;
+    display: flex;
+    border-radius: 10px;
+    justify-content:center;
+    align-items: center;
+    font-size: 400%;
+    }

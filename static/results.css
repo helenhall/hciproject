@@ -1,0 +1,33 @@
+.headerPrompt {
+    color: white;
+    padding: 5px;
+    font-size: larger;
+}
+
+.clubEntry {
+    background-color: white;
+}
+
+.bodyBackground {
+    background-color: #322359;
+}
+
+.gallery {
+    background-color: white;
+}
+
+#circle {
+    background: lightblue;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.undertext {
+    font-size: 100px;
+    color: white;
+}
+
+.lightblue{
+    background-color: #74B5E9;
+}
