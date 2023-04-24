@@ -8,7 +8,7 @@
     <title>Result</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bodyBackground">
+<body class="bodyBackground" id = "resultsPage">
     <div>
         <div class="headerPrompt p-8">
             <p>
@@ -121,5 +121,10 @@
             </div>
         </div>
     </div>
+    <script>
+        setTimeout(() => {
+            window.location.href = "/";
+            }, 2000);
+    </script>
 </body>
 </html>
