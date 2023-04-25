@@ -1,5 +1,8 @@
 # Club Connections
 
+### Overview:
+For Club Connections, we recommend clubs to Yale students depending on their answers to a quiz that takes around 2-3 minutes to complete. We can recommend more than 80 clubs to a student, and the subset that we select are taylored to the player. 
+
 ## Setup
 
 ### Requirements
@@ -11,10 +14,12 @@
 ### Dependencies Installation
 Either of the two will install the requirements necessary for this project: The setup.sh shell script should handle this for you.
 > pipenv install -r requirements.txt
+
 > pip install -r requirements.txt
 
 ### Run Project
 There are two shell scripts ‘setup.sh’ and ‘run.sh’ that contain the shell commands required to setup the environment and run the code in that environment. 
+
 First to execute: setup.sh (shown explicity below)
 > pipenv install -r requirements.txt
 
@@ -27,7 +32,17 @@ http://cpsc484-04.yale.internal:8080/
 
 
 ### Explanation and Tasks
-  We set out to accomplish two tasks: 1. Give the student ability to explore clubs that meet their interests and 2. Give students the ability (via QR codes) to easily access the club to hopefully join! During the coding process with help from TAs, our project design changed slightly and we decided to focus more on the quiz feature rather than the drawing feature. So essentially, Club Connect is a quiz game which connects students to clubs that match their interests through fun questions. You should be able to use both left and right hands to navigate through the website, but you (purposefully for error elimination) have to hold your hand up in the right position for 2-3 seconds while the seleceted box is colored green to select an answer choice. There also must only be one person in the camera view, and ideally you would be a few steps back from the display. 
+  We set out to accomplish two tasks: 
+  - [1] Give the student ability to explore clubs that meet their interests and 
+  - [2] Give students the ability (via QR codes) to easily access the club to hopefully join! 
+  
+  We accomplished these two tasks becasue we created an algorithm that would generate a list of clubs that the user/student would be interested given their interests. We also gave the students the ability (via QR codes) to easily access their clubs' information/home pages to hopefully increase their member ship counts. 
+  
+  During the coding process with help from TAs, our project design changed slightly and we decided to focus more on the quiz feature rather than the drawing feature. So essentially, Club Connect is a quiz game which connects students to clubs that match their interests through fun questions. You should be able to use both left and right hands to navigate through the website, but you (purposefully for error elimination) have to hold your hand up in the right position for 2-3 seconds while the seleceted box is colored green to select an answer choice. There also must only be one person in the camera view, and ideally you would be a few steps back from the display. 
+
+### Features:
+
+We wanted to highlight some features that are consistent with the heuristics mentioned in class. For one, we implmented an info slide as soon as the quiz starts to prompt the user with how much time they have to answer and how to select answers. If the user does not select an answer in the allocated time (either took too long or the user leaves), then the website will display a prompt indicating the system status that the page timed out and will be redirecting to the start page. This covers cases when the user does not behave as expected (corner cases) and covers them by starting from the beginning. We also create QR codes that will direct users to the home pages of Yale clubs that users can scan to be put into contact with clubs at Yale. This allows a more seemless way to expose clubs to users and up their membership count. 
 
 ### Collaboration Record
 <br>
