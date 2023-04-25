@@ -2,23 +2,32 @@
 
 ## Setup
 
-### Requirement
+### Requirements
 
 - Python 3.11
 - Flask
   - Install Flask by following instructions listed [here](https://flask.palletsprojects.com/en/2.2.x/installation/).
 
 ### Dependencies Installation
-
+Either of the two will install the requirements necessary for this project: The setup.sh shell script should handle this for you.
+> pipenv install -r requirements.txt
 > pip install -r requirements.txt
 
 ### Run Project
-First have to run the server using the run.sh file which includes: 
+There are two shell scripts ‘setup.sh’ and ‘run.sh’ that contain the shell commands required to setup the environment and run the code in that environment. 
+First to execute: setup.sh (shown explicity below)
+> pipenv install -r requirements.txt
+
+Second to execute: run.sh (shown explicity below)
  > pipenv run python app.py
- Here's the web address in web file: http://cpsc484-04.yale.internal:8080/
+
+Web server address:
+http://cpsc484-04.yale.internal:8080/
+
+
 
 ### Explanation and Tasks
-  We set out to accomplish two tasks: 1. Give the student ability to explore clubs that meet their interests and 2. Give students the ability (via QR codes) to easily access the club to hopefully join! During the coding process with help from TAs, our project design changed slightly and we decided to focus more on the quiz feature rather than the drawing feature. So essentially, Club Connect is a quiz game which connects students to clubs that match their interests through fun questions. You should be able to use both left and right hands to navigate through the website, but you (purposefully for error elimination) have to hold your hand up in the right position for a few seconds until for the quiz questions the box turns green. There also must only be one person in the camera view, and ideally you would be a few steps back from the display. 
+  We set out to accomplish two tasks: 1. Give the student ability to explore clubs that meet their interests and 2. Give students the ability (via QR codes) to easily access the club to hopefully join! During the coding process with help from TAs, our project design changed slightly and we decided to focus more on the quiz feature rather than the drawing feature. So essentially, Club Connect is a quiz game which connects students to clubs that match their interests through fun questions. You should be able to use both left and right hands to navigate through the website, but you (purposefully for error elimination) have to hold your hand up in the right position for 2-3 seconds while the seleceted box is colored green to select an answer choice. There also must only be one person in the camera view, and ideally you would be a few steps back from the display. 
 
 ### Collaboration Record
 <br>
@@ -47,7 +56,7 @@ Implemented: app.py
 - Tested code with recorded and live TV data
 
 
-
+<br>
 <h4>Helen Hall: hrh24</h4>
 
 - completely reformated prototype in figma, adding design such as:
@@ -62,6 +71,7 @@ Implemented: app.py
 - Met with group for 2 hours on April 24 to discuss questions/databses/camera and tested display
 - Finally, worked on readme file (explanation and tasks) and adding last elements to home page
 
+<br>
 <h4>Yibo Yan: yy644</h4>
 
 - Worked on design, refinement and implementation of result page for displaying club QR code results, including styling. 
@@ -69,6 +79,7 @@ Implemented: app.py
 - Worked with Allan on fixing issues with website.
 - Partially worked on readme discussing preparation for our project.
 
+<br>
 <h4>Kevin Wu: sw952</h4>
 
 - For the implementation of the prototype, I was primarily responsible for question design, collecting club data and implementing the backend. My first contribution is the initial design of questions. I collected data on over 80 clubs we included in  our prototype  and designed over ten questions that the user will answer to determine the clubs the prototype recommends. I designed questions that broke down clubs into large, reasonable categories. During this process, I collected names and categories and other information of clubs that we included for this assignment. I was also responsible for designing and implementing the backend for the prototype. I started to implement a SQL backend database that has relations Questions, Answers, Categories. The chief difficulty was for the database to be able to tell if answers lead to follow up questions or a suggested category. At the end, we decided to use multiple python dictionaries and Classes to replace a SQL backend for the flow of the prototype. I implemented the questions, answers and helped implement the clubs data structures. Code I implemented was shared with my team via text.
