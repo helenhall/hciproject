@@ -280,7 +280,7 @@ clubs = {
         "https://yaleaerospace.org/"
     ),
     54: Club(
-        "Yale undergraduate science olympiad",
+        "Yale Undergraduate Science Olympiad",
         "https://yuso.yale.edu/"
     ),
     55: Club(

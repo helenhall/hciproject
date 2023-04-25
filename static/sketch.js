@@ -13,7 +13,8 @@ let topright = document.getElementById("2");
 let bottomleft = document.getElementById("3");
 let bottomright = document.getElementById("4");
 
-
+let time_to_select = 3000;
+let current_person_id = null;
 
 $(document).ready(function() {
   frames.start();
@@ -26,6 +27,9 @@ var frames = {
     var url = "ws://" + host + "/frames";
     frames.socket = new WebSocket(url);
     frames.socket.onmessage = function (event) {
+      // look at people array
+      // if len of people is greater than 0
+      // save the person who is at index 0, and save their body_id
       var command = frames.get_command(JSON.parse(event.data));
       if (command) {
         console.log("exists", topleft);
@@ -51,16 +55,29 @@ var frames = {
     var command = 0;
     // if there are no people in the frame
     if (frame.people.length < 1) {
+      current_person_id = null;
       return command;
     }
+    update_current_player_id(frame);
 
-    var pxy = frame.people[0].joints[2]["pixel"];
+    let current_player = null;
+
+    for (let i = 0; i < frame.people.length; i++){
+      if (frame.people[i].body_id == current_person_id) {
+        current_player = frame.people[i];
+      } else {
+        current_player = frame.people[0];
+      }
+    }
+
+
+    var pxy = current_player.joints[2]["pixel"];
     var chest_x = pxy["x"];
     var chest_y = pxy["y"];
     // var chest_z = pxy["y"]
 
-    var px = (frame.people[0].joints[8]["pixel"]["x"] - chest_x) * -1;
-    var py = (frame.people[0].joints[8]["pixel"]["y"] - chest_y) * -1;
+    var px = (current_player.joints[8]["pixel"]["x"] - chest_x) * -1;
+    var py = (current_player.joints[8]["pixel"]["y"] - chest_y) * -1;
 
     console.log("normalized wrist pix",px, py);
 
@@ -77,15 +94,15 @@ var frames = {
       if (px > 5) {
         //bottomright
         command = 3;
-      } else if (px < -80) {
+      } else if (px < -100) {
         //bottomleft
         command = 4;
       }
     } 
 
 
-    var rpx = (frame.people[0].joints[15]["pixel"]["x"] - chest_x) * -1;
-    var rpy = (frame.people[0].joints[15]["pixel"]["y"] - chest_y) * -1;
+    var rpx = (current_player.joints[15]["pixel"]["x"] - chest_x) * -1;
+    var rpy = (current_player.joints[15]["pixel"]["y"] - chest_y) * -1;
 
 
     console.log("right wrist pix",rpx, rpy);
@@ -120,19 +137,19 @@ var frames = {
 
 
 
-  get_right_wrist_command: function (frame) {
-    var command = null;
-    if (frame.people.length < 1) {
-        return command;
-    }
+  // get_right_wrist_command: function (frame) {
+  //   var command = null;
+  //   if (frame.people.length < 1) {
+  //       return command;
+  //   }
 
-    var pelvis_x = frame.people[0].joints[0].position.x;
-    var pelvis_y = frame.people[0].joints[0].position.y;
-    var pelvis_z = frame.people[0].joints[0].position.z;
-    var right_wrist_x = (frame.people[0].joints[15].position.x - pelvis_x) * -1;
-    var right_wrist_y = (frame.people[0].joints[15].position.y - pelvis_y) * -1;
-    var right_wrist_z = (frame.people[0].joints[15].position.z - pelvis_z) * -1;
-  }
+  //   var pelvis_x = frame.people[0].joints[0].position.x;
+  //   var pelvis_y = frame.people[0].joints[0].position.y;
+  //   var pelvis_z = frame.people[0].joints[0].position.z;
+  //   var right_wrist_x = (frame.people[0].joints[15].position.x - pelvis_x) * -1;
+  //   var right_wrist_y = (frame.people[0].joints[15].position.y - pelvis_y) * -1;
+  //   var right_wrist_z = (frame.people[0].joints[15].position.z - pelvis_z) * -1;
+  // }
 };
 
 
@@ -158,10 +175,35 @@ function check_answer(boxID) {
               console.log("pause again");
           })
       }
-  }, 2000)
+  }, time_to_select)
+};
+
+
+
+function get_all_players(frame) {
+  let bodyIds = [];
+  for (let i = 0; i < frame.people.length; i++) {
+    const bodyId = frame.people[i].body_id;
+    bodyIds.push(bodyId);
+  }
+  return bodyIds
+};
+
+
+function update_current_player_id(frame) {
+
+  let bodyIds = get_all_players(frame);
+  let numIds = bodyIds.length;
+
+  if (numIds > 0) {
+    if (current_person_id == null || !bodyIds.includes(current_person_id)) {
+      current_person_id = bodyIds[0];
+    }
+  }
 };
 
 function check_raised_hand(command) {
+  // if hand is raised in either quadrant 1 or 2.
   if (command == 1 || command == 2) {
     let url = "/question/1";
     change_page(url);
@@ -177,16 +219,16 @@ function select_square(command) {
       resetSquares(); 
   } else if (command == 2) {
       topleft.style.backgroundColor = "green";
-      setTimeout(check_answer(topleft), 1000);
+      check_answer(topleft), time_to_select;
   } else if (command == 1) {
       topright.style.backgroundColor = "green";
-      setTimeout(check_answer(topright), 1000);
-  } else if (command == 3) {
-      bottomleft.style.backgroundColor = "green";
-      setTimeout(check_answer(bottomleft), 1000);
+      check_answer(topright), time_to_select;
   } else if (command == 4) {
+      bottomleft.style.backgroundColor = "green";
+      check_answer(bottomleft), time_to_select;
+  } else if (command == 3) {
       bottomright.style.backgroundColor = "green";
-      setTimeout(check_answer(bottomright), 1000);
+      check_answer(bottomright), time_to_select;
   }
 };
 
