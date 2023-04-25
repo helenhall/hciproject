@@ -22,4 +22,16 @@ First have to run the server using the run.sh file which includes:
 
 ### Collaboration Record
 
-Helen Hall
+Helen Hall: hrh24
+- completely reformated prototype in figma, adding design such as:
+  -  made a logo in photoshop
+  -  figured out the color scheme
+  -  Made each section look more visually appealing
+- Made the homepage look like the new figma using CSS - so learned Tailwind CSS and applied those formats
+- Started implementing flask
+- Error checked for app.py, so read through and understood code, figured out how to record sample data to check console log
+- created and managed the repository and merge/pull requests
+- Came up with 10 questions (4 answers each) and how each club result comes from the questions - final questions displayed
+- Met with group for 2 hours on April 24 to discuss questions/databses/camera and tested display
+- Finally, worked on readme file (explanation and tasks) and adding last elements to home page
+
