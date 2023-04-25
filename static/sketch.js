@@ -1,7 +1,7 @@
 
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 //
-var host = "cpsc484-04.yale.internal:8888";
+// var host = "cpsc484-04.yale.internal:8888";
 // var host = "127.0.0.1:4444";
 
 // var host = "127.0.0.1:4444";
@@ -33,10 +33,12 @@ var frames = {
         console.log("exists", topleft);
         if (up !== null) {
             check_raised_hand(command);
+            sleep(2000);
         } else if (bottomright) {
             // if in question.html
             console.log("bruh");
             select_square(command);
+            sleep(2000);
         }
       } else {
         if (bottomright) {
@@ -96,7 +98,7 @@ var frames = {
       if (rpx > 50) {
         //topright
         command = 1;
-        console.log("updated");
+        // console.log("updated");
       } else if (rpx < -10) {
         //topleft
         command = 2;
@@ -195,14 +197,10 @@ function change_page(url) {
 
 function check_answer(boxID) {
   setTimeout(function () {
-      if (boxID.style.backgroundColor == "red") {
+      if (boxID.style.backgroundColor == "green") {
           console.log("GOOD SEARCH", boxID);
           let tagID = boxID.getAttribute("id") + "tag";
           console.log("tagid", tagID);
-          // console.log(boxID.getAttribute("href"));
-          // setTimeout(function () {
-          //     console.log("pause");
-          // }, 2000);
           let tag = document.getElementById(tagID);
           console.log("tag", tag);
           change_page(tag.getAttribute("href"));
@@ -229,16 +227,16 @@ function select_square(command) {
   if (command == 5 || command == 0) {
       resetSquares(); 
   } else if (command == 2) {
-      topleft.style.backgroundColor = "red";
+      topleft.style.backgroundColor = "green";
       setTimeout(check_answer(topleft), 1000);
   } else if (command == 1) {
-      topright.style.backgroundColor = "red";
+      topright.style.backgroundColor = "green";
       setTimeout(check_answer(topright), 1000);
   } else if (command == 3) {
-      bottomleft.style.backgroundColor = "red";
+      bottomleft.style.backgroundColor = "green";
       setTimeout(check_answer(bottomleft), 1000);
   } else if (command == 4) {
-      bottomright.style.backgroundColor = "red";
+      bottomright.style.backgroundColor = "green";
       setTimeout(check_answer(bottomright), 1000);
   }
 };
@@ -262,3 +260,16 @@ function sendWristCommand(command) {
       left.style.color = "green";
   }
 };
+
+
+
+function sleep(time)
+{
+    // defer the execution of anonymous function for 
+    // 3 seconds and go to next line of code.
+    setTimeout(function(){ 
+
+        console.log('waiting');
+    }, time);  
+}
+

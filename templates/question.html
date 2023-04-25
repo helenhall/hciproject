@@ -9,11 +9,15 @@
     </head>
     <body>
         <div>
-            <div class="spanningrectangle">Question 1</div>
+            <div class="spanningrectangle">{{question[0]}}</div>
         </div>
         
         <br>
-        <div class="container"></div>
+        <div class="container">
+            {% for answer in answers %}
+            <a id="toplefttag" href="/response/{{question[1]}}/{{answer[1]}}"><div id="topleft">{{answer[0]}}</div></a>
+            {% endfor %}
+        </div>
         
     </body>
     <script src="../static/sketch.js"></script>
