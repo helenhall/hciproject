@@ -2,7 +2,7 @@
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 //
 // var host = "cpsc484-04.yale.internal:8888";
-// var host = "127.0.0.1:4444";
+var host = "127.0.0.1:4444";
 
 let up = document.getElementById('up');
 let topleft = document.getElementById("1");
@@ -15,7 +15,7 @@ let current_person_id = null;
 // for "check_if_valid_click" function
 let num_frames = 0;
 let current_command = null;
-let valid_num_frames = 20;
+let valid_num_frames = 15;
 
 $(document).ready(function() {
   frames.start();
@@ -184,12 +184,6 @@ function check_raised_hand(command) {
 
 function check_if_valid_click(command) {
   console.log("num_frames", num_frames, "current_command", command, "searching for:", current_command);
-
-  // given a command
-
-  // if the command is equal to the previous command, add one to the counter
-  
-  // if not, reset counter and previous command
   if (command == current_command) {
     num_frames += 1;
   } else {
