@@ -69,7 +69,7 @@ answer_dict = {
     },
     10: {
         "YCC and its controversies": 30,
-        "New Haven’s Environmental Progress": 31,
+        "New Haven's Environmental Progress": 31,
         "A Satirical Essay on Fizz called Buzz": 32,
         "Growing Conflicts Abroad and Our Role": 33
     }

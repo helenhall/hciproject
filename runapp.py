@@ -3,12 +3,8 @@ from flask import Flask, render_template, make_response, redirect, url_for
 from database import question_dict, answer_dict
 from clubs import all_clubs, clubs
 import requests
-import random
 
 app = Flask(__name__, template_folder="./templates", static_folder='./static')
-
-
-
 
 # def get_question(id):
 
@@ -122,9 +118,6 @@ def response(qid, id):
 def results():
     results = responses.get_clubs()
     res = attach_qr_url_codes(results)
-    if len(res) > 6:
-        random.shuffle(res)
-        res = res[:6]
     html = render_template("results.html", results=res)
     result = make_response(html)
     return result
