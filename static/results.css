@@ -31,3 +31,15 @@
 .lightblue{
     background-color: #74B5E9;
 }
+
+.square-images {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .square-images img {
+    width: 200px; /* Change this to your desired size */
+    height: 200px; /* Change this to your desired size */
+    object-fit: cover;
+    object-position: center;
+  }

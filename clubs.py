@@ -1,6 +1,6 @@
 all_clubs = {
     1: ['Maison', 'YVAC'], 
-    2: ['YVAC'], 
+    2: ['Yale Film Society', 'YVAC'], 
     3: ['YVAC', 'Design for America'], 
     4: ['YVAC', 'Yale Daily News', 'Record'], 
     5: ['Smart Women Securities', 'Yale Undergraduate Consulting Group'], 
@@ -409,6 +409,14 @@ clubs = {
     86: Club(
         'Club Rugby', 
         'https://www.yalerugby.com/'
+    ), 
+    87: Club(
+        'Yale Film Society', 
+        'https://linktr.ee/yalefilm'
+    ), 
+    88: Club(
+        'Yale College Republicans', 
+        'https://www.facebook.com/yalegop/'
     )
 }
 
