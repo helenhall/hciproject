@@ -1,2 +1,2 @@
-chmod +x run.sh
-pipenv run python3 app.py
+#!/bin/bash
+pipenv run python app.py
