@@ -1,9 +1,7 @@
 
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 //
-// var host = "cpsc484-04.yale.internal:8888";
-var host = "127.0.0.1:4444";
-
+var host = "cpsc484-04.yale.internal:8888";
 // var host = "127.0.0.1:4444";
 
 let up = document.getElementById('up');

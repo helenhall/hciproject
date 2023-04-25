@@ -1,12 +1,9 @@
 from flask import Flask, render_template, make_response, redirect, url_for
-
 from database import question_dict, answer_dict
 from clubs import all_clubs, clubs
-import requests
 
 app = Flask(__name__, template_folder="./templates", static_folder='./static')
 
-# def get_question(id):
 
 def process_answers(dictionary):
     answers = []
@@ -26,7 +23,6 @@ def get_question_answers(qid):
     answers = answer_dict[qid]
     return(question, answers)
 
-#get next qid
 def get_next_qid(qid, answer):
     if(qid == 1 or qid == 2):
         return answer_dict[qid][answer]
@@ -44,14 +40,8 @@ def get_url(club_name):
 def attach_qr_url_codes(results):
     res = []
     for result in results:
-        print(result)
         res.append([result, get_url(result)])
     return res
-    # response = requests.get("http://api.qrserver.com/v1/create-qr-code/?data=https://www.coursetable.com/catalog&size=100x100")
-    # print(response.json)
-    # print(response.content)
-    # print(response.links)
-    # print(response.raw)
 
 class Responses:
     def __init__(self):
@@ -70,7 +60,6 @@ class Responses:
     def reset_clubs(self):
         self.club_names = []
 
-
 responses = Responses()
 
 @app.route('/')
@@ -82,16 +71,11 @@ def index():
     result = make_response(html)
     return result
 
-
-
 @app.route('/question/<num>')
 def question(num):
     details = get_question_answers(num)
     question = [details[0], num]
     answers = process_answers(details[1])
-
-    print(answers)
-    print(type(question), type(answers))
     html = render_template("question.html",
                            question=question,
                            answers = answers
@@ -124,5 +108,5 @@ def results():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5100, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
 
