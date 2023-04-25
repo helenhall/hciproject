@@ -2,7 +2,7 @@
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 //
 // var host = "cpsc484-04.yale.internal:8888";
-// var host = "127.0.0.1:4444";
+var host = "127.0.0.1:4444";
 
 // var host = "127.0.0.1:4444";
 
@@ -10,10 +10,10 @@ let up = document.getElementById('up');
 let down = document.getElementById('down');
 let left = document.getElementById('left');
 let right = document.getElementById('right');
-let topleft = document.getElementById("topleft");
-let topright = document.getElementById("topright");
-let bottomleft = document.getElementById("bottomleft");
-let bottomright = document.getElementById("bottomright");
+let topleft = document.getElementById("1");
+let topright = document.getElementById("2");
+let bottomleft = document.getElementById("3");
+let bottomright = document.getElementById("4");
 
 
 
@@ -116,55 +116,6 @@ var frames = {
 
       }
     } 
-
-
-
-
-
-    
-
-
-
-    
-    
-
-
-    
-    // console.log(chest_x, chest_y);
-
-    // Normalize by subtracting the root (pelvis) joint coordinates
-    // var pelvis_x = frame.people[0].joints[2].position.x;
-    // var pelvis_y = frame.people[0].joints[2].position.y;
-    // var pelvis_z = frame.people[0].joints[2].position.z;
-    // var left_wrist_x = (frame.people[0].joints[7].position.x - pelvis_x) * -1;
-    // var left_wrist_y = (frame.people[0].joints[7].position.y - pelvis_y) * -1;
-    // var left_wrist_z = (frame.people[0].joints[7].position.z - pelvis_z) * -1;
-
-    // if (left_wrist_z < 100) {
-    //     return command;
-    //   }
-    
-    // if (left_wrist_y > 0) {
-    //     if (left_wrist_x > 150) {
-    //         //topright
-    //         command = 1;
-    //     } else if (left_wrist_x < -150){
-    //         //topleft
-    //         command = 2;
-    //     } else {
-    //         command = 5;
-    //     }
-    // } else if(left_wrist_y < 0) {
-    //     if (left_wrist_x > 100) {
-    //         //bottomright
-    //         command = 3;
-    //     } else if (left_wrist_x < -100){
-    //         //bottomleft
-    //         command = 4;
-    //     } else {
-    //         command = 5;
-    //     }
-    // }
     console.log("command", command)
     return command;
   },

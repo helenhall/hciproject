@@ -14,8 +14,9 @@
         
         <br>
         <div class="container">
+            {% set str = "tag" %}
             {% for answer in answers %}
-            <a id="toplefttag" href="/response/{{question[1]}}/{{answer[1]}}"><div id="topleft">{{answer[0]}}</div></a>
+            <a id="{{ loop.index ~ str }}" href="/response/{{question[1]}}/{{answer[1]}}"><div id="{{loop.index}}">{{answer[0]}}</div></a>
             {% endfor %}
         </div>
         
