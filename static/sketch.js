@@ -5,16 +5,17 @@
 var host = "127.0.0.1:4444";
 
 let up = document.getElementById('up');
-let down = document.getElementById('down');
-let left = document.getElementById('left');
-let right = document.getElementById('right');
 let topleft = document.getElementById("1");
 let topright = document.getElementById("2");
 let bottomleft = document.getElementById("3");
 let bottomright = document.getElementById("4");
 
-let time_to_select = 3000;
 let current_person_id = null;
+
+// for "check_if_valid_click" function
+let num_frames = 0;
+let current_command = null;
+let valid_num_frames = 20;
 
 $(document).ready(function() {
   frames.start();
@@ -27,20 +28,14 @@ var frames = {
     var url = "ws://" + host + "/frames";
     frames.socket = new WebSocket(url);
     frames.socket.onmessage = function (event) {
-      // look at people array
-      // if len of people is greater than 0
-      // save the person who is at index 0, and save their body_id
       var command = frames.get_command(JSON.parse(event.data));
       if (command) {
         console.log("exists", topleft);
         if (up !== null) {
             check_raised_hand(command);
-            sleep(2000);
         } else if (bottomright) {
             // if in question.html
-            console.log("bruh");
             select_square(command);
-            sleep(2000);
         }
       } else {
         if (bottomright) {
@@ -133,23 +128,7 @@ var frames = {
     } 
     console.log("command", command)
     return command;
-  },
-
-
-
-  // get_right_wrist_command: function (frame) {
-  //   var command = null;
-  //   if (frame.people.length < 1) {
-  //       return command;
-  //   }
-
-  //   var pelvis_x = frame.people[0].joints[0].position.x;
-  //   var pelvis_y = frame.people[0].joints[0].position.y;
-  //   var pelvis_z = frame.people[0].joints[0].position.z;
-  //   var right_wrist_x = (frame.people[0].joints[15].position.x - pelvis_x) * -1;
-  //   var right_wrist_y = (frame.people[0].joints[15].position.y - pelvis_y) * -1;
-  //   var right_wrist_z = (frame.people[0].joints[15].position.z - pelvis_z) * -1;
-  // }
+  }
 };
 
 
@@ -162,19 +141,12 @@ function change_page(url) {
 
 
 function check_answer(boxID) {
-
-      // if (boxID.style.backgroundColor == "green") {
-      //     // console.log("GOOD SEARCH", boxID);
   let tagID = boxID.getAttribute("id") + "tag";
   // console.log("tagid", tagID);
   let tag = document.getElementById(tagID);
   // console.log("tag", tag);
   change_page(tag.getAttribute("href"));
   resetSquares();
-      //     setTimeout(function () {
-      //         console.log("pause again");
-      //     })
-      // }
 };
 
 
@@ -209,9 +181,6 @@ function check_raised_hand(command) {
   }
 };
 
-let num_frames = 0;
-let current_command = null;
-let valid_num_frames = 20;
 
 function check_if_valid_click(command) {
   console.log("num_frames", num_frames, "current_command", command, "searching for:", current_command);
@@ -236,7 +205,6 @@ function check_if_valid_click(command) {
 }
 
 function select_square(command) {
-  console.log("inside select", command);
   resetSquares()
   if (command == 5 || command == 0) {
       resetSquares(); 
