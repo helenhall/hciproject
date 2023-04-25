@@ -1,7 +1,8 @@
 from flask import Flask, render_template, make_response, redirect, url_for
 
 from database import question_dict, answer_dict
-from clubs import all_clubs
+from clubs import all_clubs, clubs
+import requests
 
 app = Flask(__name__, template_folder="./templates", static_folder='./static')
 
@@ -28,7 +29,6 @@ def get_question_answers(qid):
     answers = answer_dict[qid]
     return(question, answers)
 
-
 #get next qid
 def get_next_qid(qid, answer):
     if(qid == 1 or qid == 2):
@@ -36,6 +36,25 @@ def get_next_qid(qid, answer):
     elif(3 <= qid <= 6):
         return 2
     else: return -1 
+
+def get_url(club_name):
+    for key in clubs.keys():
+        club = clubs[key]
+        if club.get_name() == club_name:
+            return f"http://api.qrserver.com/v1/create-qr-code/?data={club.url}&size=100x100"
+
+
+def attach_qr_url_codes(results):
+    res = []
+    for result in results:
+        print(result)
+        res.append([result, get_url(result)])
+    return res
+    # response = requests.get("http://api.qrserver.com/v1/create-qr-code/?data=https://www.coursetable.com/catalog&size=100x100")
+    # print(response.json)
+    # print(response.content)
+    # print(response.links)
+    # print(response.raw)
 
 class Responses:
     def __init__(self):
@@ -98,11 +117,11 @@ def response(qid, id):
         responses.add_clubs(res)
         return redirect(url_for("results"))
     
-
 @app.route('/results')
 def results():
     results = responses.get_clubs()
-    html = render_template("results.html", results=results)
+    res = attach_qr_url_codes(results)
+    html = render_template("results.html", results=res)
     result = make_response(html)
     return result
 

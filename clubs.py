@@ -1,6 +1,6 @@
 all_clubs = {
     1: ['Maison', 'YVAC'], 
-    2: ['Film thing (replace)', 'YVAC'], 
+    2: ['YVAC'], 
     3: ['YVAC', 'Design for America'], 
     4: ['YVAC', 'Yale Daily News', 'Record'], 
     5: ['Smart Women Securities', 'Yale Undergraduate Consulting Group'], 
@@ -16,7 +16,7 @@ all_clubs = {
     15: ['Danceworks', 'Ballet Folklorico', 'Ballroom Dance'], 
     16: ['Yale Dramatic Association', 'Oye!', 'Yale Children\'s Theater Project'], 
     17: ['Just Add Water', 'The Odd Ducks', 'The Purple Crayon', 'The Viola Question'], 
-    18: ['Red Hot Poker', 'The Cucumber', 'Fifth Humor', 'The Record'], 
+    18: ['Red Hot Poker', 'The Cucumber', 'Fifth Humor', 'The Yale Record'], 
     19: ['Just Add Water', 'Guild of Carillonneurs', 'Tangled Up in Blue'], 
     20: ['Red Hot Poker', 'Viola Question', 'Yale Dramat'], 
     21: ['Women and Gender Minorities in CS', 'Yale Computer Society', 'YHack', 'Yale Scientific Magazine', 'National Society of Black Engineers'], 
@@ -59,6 +59,12 @@ class Club:
         self.url = url
     def get_name(self):
         return self.name
+
+clubs = {
+    "Maison": "https://yaleconnect.yale.edu/mby/home/",
+    "YVAC": "https://yaleconnect.yale.edu/YVAC/web_officers",
+    
+}
 
 clubs = {
     1: Club(
@@ -113,214 +119,297 @@ clubs = {
         "https://yaleconnect.yale.edu/feeds?type=club&type_id=46684&tab=home"
     ),
     14: Club(
-        "Volleyball"
+        "Volleyball",
+        "https://yaleconnect.yale.edu/YCMVOLLEYBALL/"
     ),
     15: Club(
-        "Ice Hockey"
+        "Ice Hockey",
+        "https://yaleconnect.yale.edu/YCMICEHOCKEY/https://yaleconnect.yale.edu/YCMICEHOCKEY/"
     ),
     16: Club(
-        "Soccer"
+        "Soccer",
+        "https://yaleconnect.yale.edu/YCWSOCCERC1"
     ),
     17: Club(
-        "Rugby"
+        "Rugby",
+        "https://yaleconnect.yale.edu/YCMRUGBY/"
     ),
     18: Club(
-        "Cycling Team"
+        "Cycling Team",
+        "http://yalecycling.squarespace.com/landing"
     ),
     19: Club(
-        "Outdoors"
+        "Outdoors",
+        "https://yaleconnect.yale.edu/OREC/"
     ),
     20: Club(
-        "Climbing Club"
+        "Climbing Club",
+        "https://yaleconnect.yale.edu/YCOCAY/"
     ),
     21: Club(
-        "Archery"
+        "Archery",
+        "https://yaleconnect.yale.edu/YCARCHERY/"
     ),
     22: Club(
-        "Figure skating"
+        "Figure skating",
+        "https://yaleconnect.yale.edu/YCFIGURESKATING/"
     ),
     23: Club(
-        "Baker\'s Dozen"
+        "Baker’s Dozen",
+        "http://www.bakersdozenyale.com/" 
     ),
     24: Club(
-        "Doox"
+        "Doox",
+        "https://dooxofyale.com/"
     ),
     25: Club(
-        "Magevet"
+        "Magevet",
+        "http://magevet.weebly.com/"
     ),
     26: Club(
-        "Mixed Co"
+        "Mixed Co",
+        "http://www.mixedcompanyofyale.com/"
     ),
     27: Club(
-        "Out of the Blue"
+        "Out of the Blue",
+        "https://yaleootb.com/"
     ),
     28: Club(
-        "Pitches and Tones"
+        "Pitches and Tones",
+        "https://www.instagram.com/yalepitchesandtones/?hl=en"
     ),
     29: Club(
-        "Yale Dancers"
+        "Yale Dancers",
+        "https://collegearts.yale.edu/organizations/alliance-dance-yale/dance-groups/yaledancers-yd"
     ),
     30: Club(
-        "Rhythmic Blue"
+        "Rhythmic Blue",
+        "https://campuspress.yale.edu/rhythmicblue/"
     ),
     31: Club(
-        "Rangeela"
+        "Rangeela",
+        "https://collegearts.yale.edu/organizations/alliance-dance-yale/dance-groups/rangeela"
     ),
     32: Club(
-        "Bhangra"
+        "Bhangra",
+        "https://collegearts.yale.edu/organizations/alliance-dance-yale/dance-groups/yale-jashan-bhangra-yjb"
     ),
     33: Club(
-        "Danceworks"
+        "Danceworks",
+        "https://campuspress.yale.edu/danceworks"
     ),
     34: Club(
-        "Ballet Folklorico"
+        "Ballet Folklorico",
+        "https://bfmdey.sites.yale.edu/"
     ),
     35: Club(
-        "Yale Dramatic Association"
+        "Yale Dramatic Association",
+        "https://yaledramat.org/"
     ),
     36: Club(
-        "Oye!"
+        "Oye!",
+        "https://www.facebook.com/oyespokenword/"
     ),
     37: Club(
-        "Yale Children’s Theater Project"
+        "Yale Children’s Theater Project",
+        "https://collegearts.yale.edu/organizations/yale-drama-coalition/performance-groups/yale-childrens-theater-project"
     ),
     38: Club(
-        "Just Add Water"
+        "Just Add Water",
+        "http://www.justaddwateryale.com/"
     ),
     39: Club(
-        "The Odd Ducks"
+        "The Odd Ducks",
+        "https://www.facebook.com/profile.php?id=100063867860214"
     ),
     40: Club(
-        "The Purple Crayon"
+        "The Purple Crayon",
+        "https://www.facebook.com/YaleCrayon/"
     ),
     41: Club(
-        "Red Hot Poker"
+        "Red Hot Poker",
+        "https://www.rhpcomedy.com/"
     ),
     42: Club(
-        "The Cucumber"
+        "The Cucumber",
+        "https://www.facebook.com/events/the-cucumber-yales-only-open-mic-stand-up-comedy-night/562051107200458/?paipv=0&eav=AfaGR54FukZ_4fQckYfg45T3Q_MAb_anrE_3p7s39bQtVoEnqzCFCNzNhrfYZUZ1-VY&_rdr"
     ),
     43: Club(
-        "Fifth Humor"
+        "Fifth Humor",
+        "https://www.instagram.com/thefifthhumour/?hl=en" 
     ),
     44: Club(
-        "Guild of Carillonneurs"
+        "Guild of Carillonneurs",
+        "http://yalecarillon.org/"
     ),
     45: Club(
-        "Tangled Up in Blue"
+        "Tangled Up in Blue",
+        "https://www.yaletuib.com/"
     ),
     46: Club(
-        "Viola Question"
+        "Viola Question",
+        "http://public.violaquestion.com/"
     ),
     47: Club(
-        "Yale Dramat"
+        "Yale Dramat",
+        "https://yaledramat.org/"
     ),
     48: Club(
-        "Women and Gender Minorities in CS"
+        "Women and Gender Minorities in CS",
+        "http://yalewics.com/"
     ),
     49: Club(
         "Yale Computer Society"
+        "http://yalecompsociety.org/"
     ),
     50: Club(
-        "YHack"
+        "YHack",
+        "https://www.instagram.com/whyhackatyhack/?hl=en"
     ),
     51: Club(
-        "Yale Scientific Magazine"
+        "Yale Scientific Magazine",
+        "https://www.yalescientific.org/"
     ),
     52: Club(
-        "Women in Physics"
+        "Women in Physics",
+        "https://physics.yale.edu/women-physics-and-women-physics"
     ),
     53: Club(
-        "Yale Undergraduate Aerospace Association"
+        "Yale Undergraduate Aerospace Association",
+        "https://yaleaerospace.org/"
     ),
     54: Club(
-        "Yale undergraduate science olympiad"
+        "Yale undergraduate science olympiad",
+        "https://yuso.yale.edu/"
     ),
     55: Club(
-        "National Society of Black Engineers"
+        "National Society of Black Engineers",
+        "https://yaleconnect.yale.edu/ycnsbe/home"
     ),
     56: Club(
-        "Bluddogs Racing Team"
+        "Bluddogs Racing Team",
+        "http://bulldogsracing.com/"
     ),
     57: Club(
-        "Engineers Without Borders"
+        "Engineers Without Borders",
+        "https://ewb.sites.yale.edu/"
     ),
     58: Club(
-        "Medical Professions Outreach"
+        "Medical Professions Outreach",
+        "https://yalemedprofoutreach.wixsite.com/home"
     ),
     59: Club(
-        "Yale Data Science"
+        "Yale Data Science",
+        "https://statistics.yale.edu/"
     ),
     60: Club(
-        "Yale Political Union"
+        "Yale Political Union",
+        "https://ypu.sites.yale.edu/"
     ),
     61: Club(
-        "William F. Buckley Jr. Program"
+        "William F. Buckley Jr. Program",
+        "https://buckleyinstitute.com/"
     ),
     62: Club(
-        "Alexander Hamilton Society"
+        "Alexander Hamilton Society",
+        "https://buckleyinstitute.com/"
     ),
     63: Club(
-        "Party of the Left"
+        "Party of the Left",
+        "https://partyoftheleft.sites.yale.edu/"
     ),
     64: Club(
-        "Conservative Party"
+        "Conservative Party",
+        "https://yaleconservativeparty.squarespace.com/"
     ),
     65: Club(
-        "Federalist Party"
+        "Federalist Party",
+        "https://sites.google.com/view/yalefederalistparty/home"
     ),
     66: Club(
-        "Liberal Party"
+        "Liberal Party",
+        "https://libs.sites.yale.edu/"
     ),
     67: Club(
-        "Independent Party"
+        "Independent Party",
+        "https://independentparty.sites.yale.edu"
     ),
     68: Club(
-        "Tory Party"
+        "Tory Party",
+        "https://yaletoryparty.com/"
     ),
     69: Club(
-        "Yale College Democrats"
+        "Yale College Democrats",
+        "https://www.yaledemocrats.com/"
     ),
     70: Club(
-        "Yale Model UN"
+        "Yale Model UN",
+        "https://ymun.org/"
     ),
     71: Club(
-        "Model Congress Association"
+        "Model Congress Association",
+        "http://www.yalemodelcongress.org/"
     ),
     72: Club(
-        "Yale Political Union"
+        "Yale Political Union",
+        "https://ypu.sites.yale.edu/"
     ),
     73: Club(
-        "Yale College Council"
+        "Yale College Council",
+        "https://www.ycc.yale.edu"
     ),
     74: Club(
-        "William F. Buckley Jr. Program"
+        "William F. Buckley Jr. Program",
+        "https://buckleyinstitute.com/"
     ),
     75: Club(
-        "The Yale Herald"
+        "The Yale Herald",
+        "https://yale-herald.com/"
     ),
     76: Club(
-        "The Yale Politic"
+        "The Yale Politic",
+        "https://thepolitic.org/"
     ),
     77: Club(
-        "Yale Historical Review"
+        "Yale Historical Review",
+        "https://yalehistoricalreview.ghost.io/"
     ),
     78: Club(
-        "Broad Recognition"
+        "Broad Recognition",
+        "http://www.broadsatyale.com/"
     ),
     79: Club(
-        "Rumpus Magazine"
+        "Rumpus Magazine",
+        "http://yalerumpus.net/"
     ),
     80: Club(
-        "Accent Multilingual magazine"
+        "Accent Multilingual magazine",
+        "https://www.accentmultilingualmagazine.com/"
     ),
     81: Club(
-        "China Hands magazine"
+        "China Hands magazine",
+        "https://chinahandsmagazine.org/"
     ),
     82: Club(
-        "The Yale Globalist"
+        "The Yale Globalist",
+        "https://globalist.yale.edu/"
     ),
     83: Club(
-        "Yale Global Health Review"
+        "Yale Global Health Review",
+        "https://yaleglobalhealthreview.com/"
+    ),
+    84: Club(
+        "The Yale Record",
+        "http://yalerecord.org/"
+    ), 
+    85: Club(
+        'Club Ice Hockey',
+        'https://yaleclubhockey.sites.yale.edu/'
+    ), 
+    86: Club(
+        'Club Rugby', 
+        'https://www.yalerugby.com/'
     )
 }
+
 
