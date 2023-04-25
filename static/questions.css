@@ -1,5 +1,21 @@
 body {
     background: #322359;
+    font-family: system-ui;
+    text-align: center;
+    
+}
+
+a:link {
+    color: #322359; /* Regular link color */
+  }
+  
+a:visited {
+    color: #322359; /* Same color as regular link */
+}
+
+a {
+    text-decoration: none;
+    background-color: none;
 }
 
 .spanningrectangle {
@@ -10,6 +26,10 @@ body {
     justify-content:center;
     align-items: center;
     font-size: 400%;
+    padding: 15px;
+    /* font-family: system-ui; */
+    border-radius: 10px;
+    text-align: center;
     }
 
     .rectangle {

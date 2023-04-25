@@ -11,120 +11,38 @@
 <body class="bodyBackground" id = "resultsPage">
     <div>
         <div class="headerPrompt p-8">
-            <p>
-                <span>Since you've selected: </span>
-                <span name="selected_activity"> placeholder</span>
-            </p>
+            <h1>
+                <span style="font-size: 50px;">Thank you for playing! Here are clubs at Yale that we recommend:</span>
+                <br>
+                <span style="font-size: 30px; color:grey;">The results will be displayed for 30 seconds.</span>
+            </h1>
         </div>
-
         <div class="grid grid-rows-1 grid-flow-col gap-2">
             <div class="flex flex-wrap">
+                {% for result in results %}
                 <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
-                    <div class="flex">
-                        <div class="flex-auto w-32 mr-4">
-                            <img src="https://placehold.co/400"/>
+                    <div>
+                        <div class="flex flex-col">
+                            <div style="font-size: 20px; font-weight: bold;">{{ result[0] }}</div>
+                        </div>
+                        <div class="square-images">
+                            <img src={{result[1]}}/>
                         </div>
                         
-                        <div class="flex flex-col">
-                            <div>
-                                Club Name
-                            </div>
-                            
-                            <div>
-                                Club Description
-                            </div>
-                        </div>
                     </div>
                 </div>
+                {% endfor %}
 
-                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
-                    <div class="flex">
-                        <div class="flex-auto w-32 mr-4">
-                            <img src="https://placehold.co/400"/>
-                        </div>
-                        
-                        <div class="flex flex-col">
-                            <div>
-                                Club Name
-                            </div>
-                            
-                            <div>
-                                Club Description
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
-                    <div class="flex">
-                        <div class="flex-auto w-32 mr-4">
-                            <img src="https://placehold.co/400"/>
-                        </div>
-                        
-                        <div class="flex flex-col">
-                            <div>
-                                Club Name
-                            </div>
-                            
-                            <div>
-                                Club Description
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
-                    <div class="flex">
-                        <div class="flex-auto w-32 mr-4">
-                            <img src="https://placehold.co/400"/>
-                        </div>
-                        
-                        <div class="flex flex-col">
-                            <div>
-                                Club Name
-                            </div>
-                            
-                            <div>
-                                Club Description
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="basis-1/4 m-4 p-4 clubEntry rounded-lg drop-shadow-lg">
-                    <div class="flex">
-                        <div class="flex-auto w-32 mr-4">
-                            <img src="https://placehold.co/400"/>
-                        </div>
-                        
-                        <div class="flex flex-col">
-                            <div>
-                                Club Name
-                            </div>
-                            
-                            <div>
-                                Club Description
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <div class="gallery mr-8 p-8 rounded-lg">
-                <div class="mb-8">
-                    You can scan the QR Code below to draw the picture... just a placeholder.
-                </div>
-
-                <div class="w-full mr-4">
-                    <img src="https://placehold.co/400"/>
-                </div>
-            </div>
+           
         </div>
     </div>
     <script>
         setTimeout(() => {
             window.location.href = "/";
-            }, 2000);
+            }, 7000);
     </script>
 </body>
 </html>

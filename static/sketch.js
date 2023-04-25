@@ -1,168 +1,155 @@
 
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 //
-// var host = "cpsc484-03.yale.internal:8888";
+// var host = "cpsc484-04.yale.internal:8888";
 var host = "127.0.0.1:4444";
-
-// var host = "127.0.0.1:4444";
 
 let up = document.getElementById('up');
 let down = document.getElementById('down');
 let left = document.getElementById('left');
 let right = document.getElementById('right');
-let topleft = document.getElementById("topleft");
-let topright = document.getElementById("topright");
-let bottomleft = document.getElementById("bottomleft");
-let bottomright = document.getElementById("bottomright");
+let topleft = document.getElementById("1");
+let topright = document.getElementById("2");
+let bottomleft = document.getElementById("3");
+let bottomright = document.getElementById("4");
 
-
+let time_to_select = 3000;
+let current_person_id = null;
 
 $(document).ready(function() {
-frames.start();
-//   twod.start();
+  frames.start();
 });
 
 var frames = {
-socket: null,
+  socket: null,
 
-start: function() {
-  var url = "ws://" + host + "/frames";
-  frames.socket = new WebSocket(url);
-  frames.socket.onmessage = function (event) {
-    var command = frames.get_command(JSON.parse(event.data));
-    if (command) {
-      console.log("exists", topleft);
-      if (up !== null) {
-          // if in index.html
-          // console.log("change page");
-          // change_page("question1.html")
-          check_raised_hand(command);
-          // up = null;
-          // change to hand must be risen above shoulder.
-          // sendWristCommand(command);
-      } else if (bottomright) {
-          // if in question.html
-          console.log("bruh");
-          select_square(command);
-      }
-    } else {
-      if (bottomright) {
-          resetSquares()
+  start: function() {
+    var url = "ws://" + host + "/frames";
+    frames.socket = new WebSocket(url);
+    frames.socket.onmessage = function (event) {
+      // look at people array
+      // if len of people is greater than 0
+      // save the person who is at index 0, and save their body_id
+      var command = frames.get_command(JSON.parse(event.data));
+      if (command) {
+        console.log("exists", topleft);
+        if (up !== null) {
+            check_raised_hand(command);
+            sleep(2000);
+        } else if (bottomright) {
+            // if in question.html
+            console.log("bruh");
+            select_square(command);
+            sleep(2000);
+        }
+      } else {
+        if (bottomright) {
+            resetSquares()
+        }
       }
     }
-  }
-},
+  },
 
-get_command: function (frame) {
-  console.log(frame)
-  var command = 0;
-  // if there are no people in the frame
-  if (frame.people.length < 1) {
+  get_command: function (frame) {
+    console.log(frame)
+    var command = 0;
+    // if there are no people in the frame
+    if (frame.people.length < 1) {
+      current_person_id = null;
+      return command;
+    }
+    update_current_player_id(frame);
+
+    let current_player = null;
+
+    for (let i = 0; i < frame.people.length; i++){
+      if (frame.people[i].body_id == current_person_id) {
+        current_player = frame.people[i];
+      } else {
+        current_player = frame.people[0];
+      }
+    }
+
+
+    var pxy = current_player.joints[2]["pixel"];
+    var chest_x = pxy["x"];
+    var chest_y = pxy["y"];
+    // var chest_z = pxy["y"]
+
+    var px = (current_player.joints[8]["pixel"]["x"] - chest_x) * -1;
+    var py = (current_player.joints[8]["pixel"]["y"] - chest_y) * -1;
+
+    // console.log("normalized wrist pix",px, py);
+
+    if (py > 60) {
+      //up
+      if (px > 10) {
+        //topright
+        command = 1;
+      } else if (px < -50) {
+        //topleft
+        command = 2;
+      }
+    } else if (py < -20) {
+      if (px > 5) {
+        //bottomright
+        command = 3;
+      } else if (px < -100) {
+        //bottomleft
+        command = 4;
+      }
+    } 
+
+
+    var rpx = (current_player.joints[15]["pixel"]["x"] - chest_x) * -1;
+    var rpy = (current_player.joints[15]["pixel"]["y"] - chest_y) * -1;
+
+
+    // console.log("right wrist pix",rpx, rpy);
+
+
+    if (rpy > 60) {
+      //up
+      if (rpx > 50) {
+        //topright
+        command = 1;
+        // console.log("updated");
+      } else if (rpx < -10) {
+        //topleft
+        command = 2;
+        // console.log("updated");
+      }
+    } else if (rpy < -20) {
+      if (rpx > 80) {
+        //bottomright
+        command = 3;
+        // console.log("updated");
+      } else if (rpx < -5) {
+        //bottomleft
+        command = 4;
+        // console.log("updated");
+
+      }
+    } 
+    console.log("command", command)
     return command;
-  }
-
-  var pxy = frame.people[0].joints[2]["pixel"];
-  var pelvis_x_pixel = pxy["x"];
-  var pelvis_y_pixel = pxy["y"];
-  
-  console.log(pelvis_x_pixel, pelvis_y_pixel);
-
-  // Normalize by subtracting the root (pelvis) joint coordinates
-  var pelvis_x = frame.people[0].joints[2].position.x;
-  var pelvis_y = frame.people[0].joints[2].position.y;
-  var pelvis_z = frame.people[0].joints[2].position.z;
-  var left_wrist_x = (frame.people[0].joints[7].position.x - pelvis_x) * -1;
-  var left_wrist_y = (frame.people[0].joints[7].position.y - pelvis_y) * -1;
-  var left_wrist_z = (frame.people[0].joints[7].position.z - pelvis_z) * -1;
-
-  if (left_wrist_z < 100) {
-      return command;
-    }
-  
-  if (left_wrist_y > 0) {
-      if (left_wrist_x > 150) {
-          //topright
-          command = 1;
-      } else if (left_wrist_x < -150){
-          //topleft
-          command = 2;
-      } else {
-          command = 5;
-      }
-  } else if(left_wrist_y < 0) {
-      if (left_wrist_x > 150) {
-          //bottomright
-          command = 3;
-      } else if (left_wrist_x < -150){
-          //bottomleft
-          command = 4;
-      } else {
-          command = 5;
-      }
-  }
-  console.log("command", command)
-  return command;
-},
+  },
 
 
 
-//   get_command_pixel: function (frame) {
-//     console.log(frame)
-//     var command = 0;
-//     // if there are no people in the frame
-//     if (frame.people.length < 1) {
-//       return command;
-//     }
-
-  // Normalize by subtracting the root (pelvis) joint coordinates
-  
-  // var pelvis_y = frame.people[0].joints[2].position.y;
-  // var pelvis_z = frame.people[0].joints[2].position.z;
-  // var left_wrist_x = (frame.people[0].joints[7].position.x - pelvis_x) * -1;
-  // var left_wrist_y = (frame.people[0].joints[7].position.y - pelvis_y) * -1;
-  // var left_wrist_z = (frame.people[0].joints[7].position.z - pelvis_z) * -1;
-
-  // if (left_wrist_z < 100) {
-  //     return command;
+  // get_right_wrist_command: function (frame) {
+  //   var command = null;
+  //   if (frame.people.length < 1) {
+  //       return command;
   //   }
-  
-  // if (left_wrist_y > 0) {
-  //     if (left_wrist_x > 150) {
-  //         //topright
-  //         command = 1;
-  //     } else if (left_wrist_x < -150){
-  //         //topleft
-  //         command = 2;
-  //     } else {
-  //         command = 5;
-  //     }
-  // } else if(left_wrist_y < 0) {
-  //     if (left_wrist_x > 150) {
-  //         //bottomright
-  //         command = 3;
-  //     } else if (left_wrist_x < -150){
-  //         //bottomleft
-  //         command = 4;
-  //     } else {
-  //         command = 5;
-  //     }
+
+  //   var pelvis_x = frame.people[0].joints[0].position.x;
+  //   var pelvis_y = frame.people[0].joints[0].position.y;
+  //   var pelvis_z = frame.people[0].joints[0].position.z;
+  //   var right_wrist_x = (frame.people[0].joints[15].position.x - pelvis_x) * -1;
+  //   var right_wrist_y = (frame.people[0].joints[15].position.y - pelvis_y) * -1;
+  //   var right_wrist_z = (frame.people[0].joints[15].position.z - pelvis_z) * -1;
   // }
-  // console.log("command", command)
-  // return command;
-
-get_right_wrist_command: function (frame) {
-  var command = null;
-  if (frame.people.length < 1) {
-      return command;
-  }
-
-  var pelvis_x = frame.people[0].joints[0].position.x;
-  var pelvis_y = frame.people[0].joints[0].position.y;
-  var pelvis_z = frame.people[0].joints[0].position.z;
-  var right_wrist_x = (frame.people[0].joints[15].position.x - pelvis_x) * -1;
-  var right_wrist_y = (frame.people[0].joints[15].position.y - pelvis_y) * -1;
-  var right_wrist_z = (frame.people[0].joints[15].position.z - pelvis_z) * -1;
-}
 };
 
 
@@ -175,78 +162,109 @@ function change_page(url) {
 
 
 function check_answer(boxID) {
-  setTimeout(function () {
-      if (boxID.style.backgroundColor == "red") {
-          console.log("GOOD SEARCH", boxID);
-          let tagID = boxID.getAttribute("id") + "tag";
-          console.log("tagid", tagID);
-          // console.log(boxID.getAttribute("href"));
-          // setTimeout(function () {
-          //     console.log("pause");
-          // }, 2000);
-          let tag = document.getElementById(tagID);
-          console.log("tag", tag);
-          change_page(tag.getAttribute("href"));
-          resetSquares();
-          setTimeout(function () {
-              console.log("pause again");
-          })
-      }
-  }, 2000)
+
+      // if (boxID.style.backgroundColor == "green") {
+      //     // console.log("GOOD SEARCH", boxID);
+  let tagID = boxID.getAttribute("id") + "tag";
+  // console.log("tagid", tagID);
+  let tag = document.getElementById(tagID);
+  // console.log("tag", tag);
+  change_page(tag.getAttribute("href"));
+  resetSquares();
+      //     setTimeout(function () {
+      //         console.log("pause again");
+      //     })
+      // }
 };
 
-// let request = null;
 
-// function handleResponse(response) {
-//   console.log(response);
-//   $("body").html(response);
-// }
+
+function get_all_players(frame) {
+  let bodyIds = [];
+  for (let i = 0; i < frame.people.length; i++) {
+    const bodyId = frame.people[i].body_id;
+    bodyIds.push(bodyId);
+  }
+  return bodyIds
+};
+
+
+function update_current_player_id(frame) {
+
+  let bodyIds = get_all_players(frame);
+  let numIds = bodyIds.length;
+
+  if (numIds > 0) {
+    if (current_person_id == null || !bodyIds.includes(current_person_id)) {
+      current_person_id = bodyIds[0];
+    }
+  }
+};
 
 function check_raised_hand(command) {
+  // if hand is raised in either quadrant 1 or 2.
   if (command == 1 || command == 2) {
     let url = "/question/1";
     change_page(url);
   }
 };
 
-// function getResults()
-//          {
-//             let city = $('#cityInput').val();
-//             city = encodeURIComponent(city);
-//             let url = '/searchresults?city=' + city;
+let num_frames = 0;
+let current_command = null;
+let valid_num_frames = 20;
 
-//             if (request != null)
-//                request.abort();
+function check_if_valid_click(command) {
+  console.log("num_frames", num_frames, "current_command", command, "searching for:", current_command);
 
-//             request = $.ajax(
-//                {
-//                   type: 'GET',
-//                   url: url,
-//                   success: handleResponse
-//                }
-//             );
-//          }
+  // given a command
 
-
-
+  // if the command is equal to the previous command, add one to the counter
+  
+  // if not, reset counter and previous command
+  if (command == current_command) {
+    num_frames += 1;
+  } else {
+    num_frames = 0;
+    current_command = command;
+  }
+  if (num_frames >= valid_num_frames) {
+    num_frames = 0;
+    return true;
+  } else {
+    return false;
+  }
+}
 
 function select_square(command) {
   console.log("inside select", command);
   resetSquares()
   if (command == 5 || command == 0) {
       resetSquares(); 
+      num_frames = 0;
   } else if (command == 2) {
-      topleft.style.backgroundColor = "red";
-      setTimeout(check_answer(topleft), 1000);
+      topleft.style.backgroundColor = "green";
+      if (check_if_valid_click(command)) {
+        check_answer(topleft);
+      }
+      // check_answer(topleft), time_to_select;
   } else if (command == 1) {
-      topright.style.backgroundColor = "red";
-      setTimeout(check_answer(topright), 1000);
-  } else if (command == 3) {
-      bottomleft.style.backgroundColor = "red";
-      setTimeout(check_answer(bottomleft), 1000);
+      topright.style.backgroundColor = "green";
+      if (check_if_valid_click(command)) {
+        check_answer(topright);
+      }
+      // check_answer(topright), time_to_select;
   } else if (command == 4) {
-      bottomright.style.backgroundColor = "red";
-      setTimeout(check_answer(bottomright), 1000);
+      bottomleft.style.backgroundColor = "green";
+      if (check_if_valid_click(command)) {
+        check_answer(bottomleft);
+      }
+      // check_answer(bottomleft), time_to_select;
+  } else if (command == 3) {
+      bottomright.style.backgroundColor = "green";
+      if (check_if_valid_click(command)) {
+        check_answer(bottomright);
+      }
+      // check_answer(bottomright), time_to_select;
   }
 };
 
@@ -256,13 +274,6 @@ function resetSquares() {
   bottomleft.style.backgroundColor = "white";
   bottomright.style.backgroundColor = "white";
 };
-
-// function resetColors() {
-//     up.style.color = "black";
-//     down.style.color = "black";
-//     left.style.color = "black";
-//     right.style.color = "black";
-// };
 
 function sendWristCommand(command) {
   resetColors();
@@ -276,3 +287,16 @@ function sendWristCommand(command) {
       left.style.color = "green";
   }
 };
+
+
+
+function sleep(time)
+{
+    // defer the execution of anonymous function for 
+    // 3 seconds and go to next line of code.
+    setTimeout(function(){ 
+
+        console.log('waiting');
+    }, time);  
+}
+
