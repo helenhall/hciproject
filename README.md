@@ -22,7 +22,7 @@ First have to run the server using the run.sh file which includes:
 
 ### Collaboration Record
 <br>
-####Allan Ding (azd5):
+<h4>Allan Ding (azd5):</h4>
 <b>Frontend:</b>
 Implemented: sketch.js, question.html, info.html, still_there.html, question.css, info.css
 - (sketch.js) Implemented the logic to detect hand location relative to chest to select the respective quadrant in question.html
@@ -45,7 +45,7 @@ Implemented: app.py
 
 
 
-####Helen Hall: hrh24
+<h4>Helen Hall: hrh24</h4>
 - completely reformated prototype in figma, adding design such as:
   -  made a logo in photoshop
   -  figured out the color scheme
@@ -58,11 +58,11 @@ Implemented: app.py
 - Met with group for 2 hours on April 24 to discuss questions/databses/camera and tested display
 - Finally, worked on readme file (explanation and tasks) and adding last elements to home page
 
-####Yibo Yan: yy644
+<h4>Yibo Yan: yy644</h4>
 - Worked on design, refinement and implementation of result page for displaying club QR code results, including styling. 
 - Worked with Kevin on designing and implementing dataset for club information.
 - Worked with Allan on fixing issues with website.
 - Partially worked on readme discussing preparation for our project.
 
-####Kevin Wu: sw952
+<h4>Kevin Wu: sw952</h4>
 - For the implementation of the prototype, I was primarily responsible for question design, collecting club data and implementing the backend. My first contribution is the initial design of questions. I collected data on over 80 clubs we included in  our prototype  and designed over ten questions that the user will answer to determine the clubs the prototype recommends. I designed questions that broke down clubs into large, reasonable categories. During this process, I collected names and categories and other information of clubs that we included for this assignment. I was also responsible for designing and implementing the backend for the prototype. I started to implement a SQL backend database that has relations Questions, Answers, Categories. The chief difficulty was for the database to be able to tell if answers lead to follow up questions or a suggested category. At the end, we decided to use multiple python dictionaries and Classes to replace a SQL backend for the flow of the prototype. I implemented the questions, answers and helped implement the clubs data structures. Code I implemented was shared with my team via text.
