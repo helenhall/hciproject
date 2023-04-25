@@ -99,6 +99,12 @@ def response(qid, id):
         responses.add_clubs(res)
         return redirect(url_for("results"))
     
+@app.route('/still_there')
+def still_there():
+    html = render_template("still_there.html")
+    res = make_response(html)
+    return res
+    
 @app.route('/results')
 def results():
     results = responses.get_clubs()

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question Page Grid</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+        <!-- <link rel="stylesheet" href="../static/questions.css"> -->
+        <style>
+            body {
+                background: #322359;
+                font-family: system-ui;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .container-vert {
+                display: grid;
+                grid-template-columns: repeat(1, 70%);
+                grid-gap: 5px;
+                align-items: center;
+                justify-content: center;
+                max-width: 70%;
+                margin: 0 auto;
+            }
+
+            .container-vert div {
+                background-color: white;
+                aspect-ratio: 15 / 6;
+                display: flex;
+                border-radius: 10px;
+                justify-content:center;
+                align-items: center;
+                font-size: 400%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <br>
+        <div class="container-vert">
+            <div>Sorry! Too much time was taken to answer.</div>
+            <div> Try again from the top.</div>
+        </div>
+        
+    </body>
+    <script>
+        const timeout = setTimeout(() => {
+        // If the user has not interacted with the page within one minute,
+        // redirect to a different HTML page
+        window.location.href = "/";
+        }, 5000);
+    </script>
+</html>
+   
