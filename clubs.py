@@ -2,20 +2,20 @@ all_clubs = {
     1: ['Maison', 'YVAC'], 
     2: ['Yale Film Society', 'YVAC'], 
     3: ['YVAC', 'Design for America'], 
-    4: ['YVAC', 'Yale Daily News', 'Record'], 
-    5: ['Smart Women Securities', 'Yale Undergraduate Consulting Group'], 
+    4: ['YVAC', 'Yale Daily News', 'The Yale Record'], 
+    5: ['Yale Undergraduate Consulting Group'], 
     6: ['Yale Undergraduate Consulting Group'], 
     7: ['Yale Net Impact', 'Dwight Hall'], 
     8: ['Yale Entrepreneurial Society', 'Eli Ventures'], 
-    9: ['Club Basketball', 'Club Volleyball', 'Club Ice Hockey', 'Club Soccer', 'Club Rugby'], 
-    10: ['Club Rugby', 'Club Soccer', 'Yale Cycling Team', 'Yale Outdoors', 'Yale Climbing Club', 'Archery'], 
-    11: ['Club Rugby', 'Club Ice Hockey'], 
-    12: ['Club Ice Hockey', 'Club Figure Skating'], 
-    13: ['Baker\'s Dozen', 'Doox', 'Magevet', 'Mixed Co', 'Out of the Blue', 'Pitches and Tones', 'Proof of the Pudding', 'Redhot & Blue', 'Shades', 'Something Extra', 'Spizzwinks', 'The New Blue', 'Society of Orpheus and Bacchus', 'Alley Cats', 'Whiffenpoofs', 'Yale Slavic Chorus'], 
+    9: ["Yale Club Men's Basketball Team", "Yale Club Women's Basketball Team", 'Volleyball', 'Ice Hockey', 'Soccer', 'Rugby'], 
+    10: ['Rugby', 'Soccer', 'Cycling Team', 'Outdoors', 'Climbing Club', 'Archery'], 
+    11: ['Rugby', 'Ice Hockey'], 
+    12: ['Ice Hockey', 'Figure skating'], 
+    13: ["Baker's Dozen", 'Doox', 'Magevet', 'Mixed Co', 'Out of the Blue', 'Pitches and Tones'], 
     14: ['Yale Dancers', 'Rhythmic Blue', 'Rangeela', 'Bhangra', 'Ballet Folklorico'], 
-    15: ['Danceworks', 'Ballet Folklorico', 'Ballroom Dance'], 
-    16: ['Yale Dramatic Association', 'Oye!', 'Yale Children\'s Theater Project'], 
-    17: ['Just Add Water', 'The Odd Ducks', 'The Purple Crayon', 'The Viola Question'], 
+    15: ['Danceworks', 'Ballet Folklorico'], 
+    16: ['Yale Dramatic Association', 'Oye!', "Yale Children's Theater Project"], 
+    17: ['Just Add Water', 'The Odd Ducks', 'The Purple Crayon'], 
     18: ['Red Hot Poker', 'The Cucumber', 'Fifth Humor', 'The Yale Record'], 
     19: ['Just Add Water', 'Guild of Carillonneurs', 'Tangled Up in Blue'], 
     20: ['Red Hot Poker', 'Viola Question', 'Yale Dramat'], 
@@ -27,11 +27,11 @@ all_clubs = {
     26: ['Party of the Left', 'Conservative Party', 'Federalist Party', 'Liberal Party', 'Independent Party', 'Tory Party', 'Yale College Democrats', 'Yale College Republicans', 'Yale Political Union'], 
     27: ['Yale Model UN', 'Model Congress Association', 'Yale Political Union', 'Yale College Council'], 
     28: ['Yale Political Union', 'Yale College Council', 'William F. Buckley Jr. Program'],
-    29: ['Yale Daily News', 'The Yale Herald', "The Yale Politic","Yale Record"],
-    30: ['Yale Daily News', 'Yale Historical Review', "Broad Recognition", "Yale Herald"],
-    31: ['Rumpus Magazine', 'Yale Record'],
+    29: ['Yale Daily News', 'The Yale Herald', "The Yale Politic","The Yale Record"],
+    30: ['Yale Daily News', 'Yale Historical Review', "Broad Recognition", "The Yale Herald"],
+    31: ['Rumpus Magazine', 'The Yale Record'],
     32: ['Accent Multilingual magazine', 'Broad Recognition', "China Hands magazine", "The Yale Globalist","Yale Global Health Review"]
-    }
+}
 
 
 
@@ -60,11 +60,11 @@ class Club:
     def get_name(self):
         return self.name
 
-clubs = {
-    "Maison": "https://yaleconnect.yale.edu/mby/home/",
-    "YVAC": "https://yaleconnect.yale.edu/YVAC/web_officers",
+# clubs = {
+#     "Maison": "https://yaleconnect.yale.edu/mby/home/",
+#     "YVAC": "https://yaleconnect.yale.edu/YVAC/web_officers",
     
-}
+# }
 
 clubs = {
     1: Club(
@@ -84,7 +84,7 @@ clubs = {
         "https://yaledailynews.com/join"
     ),
     5: Club(
-        "Yale Record",
+        "Record",
         "http://yalerecord.org/"
     ),
     6: Club(
@@ -96,7 +96,8 @@ clubs = {
         "https://www.yaleconsulting.org/"
     ),
     8: Club(
-        "Yale Net Impact"
+        "Yale Net Impact",
+        "http://www.yalenetimpact.com/"
     ),
     9: Club(
         "Dwight Hall",
@@ -155,7 +156,7 @@ clubs = {
         "https://yaleconnect.yale.edu/YCFIGURESKATING/"
     ),
     23: Club(
-        "Baker’s Dozen",
+        "Baker's Dozen",
         "http://www.bakersdozenyale.com/" 
     ),
     24: Club(
@@ -211,7 +212,7 @@ clubs = {
         "https://www.facebook.com/oyespokenword/"
     ),
     37: Club(
-        "Yale Children’s Theater Project",
+        "Yale Children's Theater Project",
         "https://collegearts.yale.edu/organizations/yale-drama-coalition/performance-groups/yale-childrens-theater-project"
     ),
     38: Club(
