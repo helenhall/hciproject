@@ -35,3 +35,9 @@ Helen Hall: hrh24
 - Met with group for 2 hours on April 24 to discuss questions/databses/camera and tested display
 - Finally, worked on readme file (explanation and tasks) and adding last elements to home page
 
+Yibo Yan: yy644
+- Worked on design, refinement and implementation of result page for displaying club QR code results, including styling. 
+- Worked with Kevin on designing and implementing dataset for club information.
+- Worked with Allan on fixing issues with website.
+- Partially worked on readme discussing preparation for our project.
+
