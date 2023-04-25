@@ -1,0 +1,30 @@
+body {
+    background: #322359;
+    font-family: system-ui;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container-vert {
+    display: grid;
+    grid-template-columns: repeat(1, 70%);
+    grid-gap: 5px;
+    align-items: center;
+    justify-content: center;
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.container-vert div {
+    background-color: white;
+    aspect-ratio: 15 / 6;
+    display: flex;
+    border-radius: 10px;
+    justify-content:center;
+    align-items: center;
+    font-size: 400%;
+}

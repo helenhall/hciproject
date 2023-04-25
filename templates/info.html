@@ -10,8 +10,8 @@
     <body>
         <br>
         <div class="container-vert">
-            <div>Sorry! Too much time was taken to answer.</div>
-            <div> Try again from the top.</div>
+            <div>Remember!You have a maximum of 1 minute to answer each question</div>
+            <div>Select a choice for 3s to confirm your answer.</div>
         </div>
         
     </body>
@@ -19,8 +19,8 @@
         const timeout = setTimeout(() => {
         // If the user has not interacted with the page within one minute,
         // redirect to a different HTML page
-        window.location.href = "/";
-        }, 5000);
+        window.location.href = "/question/1";
+        }, 7000);
     </script>
 </html>
    

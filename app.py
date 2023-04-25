@@ -72,6 +72,14 @@ def index():
     result = make_response(html)
     return result
 
+@app.route('/info')
+def info():
+    html = render_template(
+        'info.html'
+    )
+    result = make_response(html)
+    return result
+
 @app.route('/question/<num>')
 def question(num):
     details = get_question_answers(num)

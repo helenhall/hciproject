@@ -176,7 +176,7 @@ function update_current_player_id(frame) {
 function check_raised_hand(command) {
   // if hand is raised in either quadrant 1 or 2.
   if (command == 1 || command == 2) {
-    let url = "/question/1";
+    let url = "/info";
     change_page(url);
   }
 };
