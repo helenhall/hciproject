@@ -1,8 +1,8 @@
 
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 //
-var host = "cpsc484-04.yale.internal:8888";
-// var host = "127.0.0.1:4444";
+// var host = "cpsc484-04.yale.internal:8888";
+var host = "127.0.0.1:4444";
 
 let up = document.getElementById('up');
 let down = document.getElementById('down');
@@ -79,7 +79,7 @@ var frames = {
     var px = (current_player.joints[8]["pixel"]["x"] - chest_x) * -1;
     var py = (current_player.joints[8]["pixel"]["y"] - chest_y) * -1;
 
-    console.log("normalized wrist pix",px, py);
+    // console.log("normalized wrist pix",px, py);
 
     if (py > 60) {
       //up
@@ -105,7 +105,7 @@ var frames = {
     var rpy = (current_player.joints[15]["pixel"]["y"] - chest_y) * -1;
 
 
-    console.log("right wrist pix",rpx, rpy);
+    // console.log("right wrist pix",rpx, rpy);
 
 
     if (rpy > 60) {
@@ -117,17 +117,17 @@ var frames = {
       } else if (rpx < -10) {
         //topleft
         command = 2;
-        console.log("updated");
+        // console.log("updated");
       }
     } else if (rpy < -20) {
       if (rpx > 80) {
         //bottomright
         command = 3;
-        console.log("updated");
+        // console.log("updated");
       } else if (rpx < -5) {
         //bottomleft
         command = 4;
-        console.log("updated");
+        // console.log("updated");
 
       }
     } 
@@ -162,20 +162,19 @@ function change_page(url) {
 
 
 function check_answer(boxID) {
-  setTimeout(function () {
-      if (boxID.style.backgroundColor == "green") {
-          console.log("GOOD SEARCH", boxID);
-          let tagID = boxID.getAttribute("id") + "tag";
-          console.log("tagid", tagID);
-          let tag = document.getElementById(tagID);
-          console.log("tag", tag);
-          change_page(tag.getAttribute("href"));
-          resetSquares();
-          setTimeout(function () {
-              console.log("pause again");
-          })
-      }
-  }, time_to_select)
+
+      // if (boxID.style.backgroundColor == "green") {
+      //     // console.log("GOOD SEARCH", boxID);
+  let tagID = boxID.getAttribute("id") + "tag";
+  // console.log("tagid", tagID);
+  let tag = document.getElementById(tagID);
+  // console.log("tag", tag);
+  change_page(tag.getAttribute("href"));
+  resetSquares();
+      //     setTimeout(function () {
+      //         console.log("pause again");
+      //     })
+      // }
 };
 
 
@@ -210,25 +209,62 @@ function check_raised_hand(command) {
   }
 };
 
+let num_frames = 0;
+let current_command = null;
+let valid_num_frames = 20;
 
+function check_if_valid_click(command) {
+  console.log("num_frames", num_frames, "current_command", command, "searching for:", current_command);
+
+  // given a command
+
+  // if the command is equal to the previous command, add one to the counter
+  
+  // if not, reset counter and previous command
+  if (command == current_command) {
+    num_frames += 1;
+  } else {
+    num_frames = 0;
+    current_command = command;
+  }
+  if (num_frames >= valid_num_frames) {
+    num_frames = 0;
+    return true;
+  } else {
+    return false;
+  }
+}
 
 function select_square(command) {
   console.log("inside select", command);
   resetSquares()
   if (command == 5 || command == 0) {
       resetSquares(); 
+      num_frames = 0;
   } else if (command == 2) {
       topleft.style.backgroundColor = "green";
-      check_answer(topleft), time_to_select;
+      if (check_if_valid_click(command)) {
+        check_answer(topleft);
+      }
+      // check_answer(topleft), time_to_select;
   } else if (command == 1) {
       topright.style.backgroundColor = "green";
-      check_answer(topright), time_to_select;
+      if (check_if_valid_click(command)) {
+        check_answer(topright);
+      }
+      // check_answer(topright), time_to_select;
   } else if (command == 4) {
       bottomleft.style.backgroundColor = "green";
-      check_answer(bottomleft), time_to_select;
+      if (check_if_valid_click(command)) {
+        check_answer(bottomleft);
+      }
+      // check_answer(bottomleft), time_to_select;
   } else if (command == 3) {
       bottomright.style.backgroundColor = "green";
-      check_answer(bottomright), time_to_select;
+      if (check_if_valid_click(command)) {
+        check_answer(bottomright);
+      }
+      // check_answer(bottomright), time_to_select;
   }
 };
 
