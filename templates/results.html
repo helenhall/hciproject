@@ -13,9 +13,10 @@
         <div class="headerPrompt p-8">
             <h1>
                 <span style="font-size: 50px;">Thank you for playing! Here are clubs at Yale that we recommend:</span>
+                <br>
+                <span style="font-size: 30px; color:grey;">The results will be displayed for 30 seconds.</span>
             </h1>
         </div>
-
         <div class="grid grid-rows-1 grid-flow-col gap-2">
             <div class="flex flex-wrap">
                 {% for result in results %}
@@ -41,7 +42,7 @@
     <script>
         setTimeout(() => {
             window.location.href = "/";
-            }, 10000);
+            }, 30000);
     </script>
 </body>
 </html>
